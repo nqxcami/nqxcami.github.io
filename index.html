@@ -3,87 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A professional portfolio and personal website showcasing projects and experience.">
+    <meta name="description" content="nqxcami — Developer & Creator. Building innovative digital experiences with clean code and modern design.">
     <meta name="author" content="nqxcami">
-    <title>nqxcami - Portfolio</title>
+    <meta name="keywords" content="nqxcami, portfolio, web developer, programmer, projects">
+    <meta property="og:title" content="nqxcami — Portfolio">
+    <meta property="og:description" content="Developer & Creator. Building innovative digital experiences.">
+    <meta property="og:type" content="website">
+    <title>nqxcami — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">
-                    <h1>nqxcami</h1>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+
+    <!-- Particle Canvas Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>nqxcami<span class="logo-bracket">/&gt;</span>
+            </a>
+            <nav aria-label="Main navigation">
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home" class="nav-link active" id="nav-home">Home</a></li>
+                    <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
+                    <li><a href="#skills" class="nav-link" id="nav-skills">Skills</a></li>
+                    <li><a href="#projects" class="nav-link" id="nav-projects">Projects</a></li>
+                    <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
                 </ul>
-            </div>
-        </nav>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <ul>
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#skills" class="mobile-link">Skills</a></li>
+            <li><a href="#projects" class="mobile-link">Projects</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+    </div>
+
     <main>
-        <!-- Hero Section -->
+        <!-- ===== HERO SECTION ===== -->
         <section id="home" class="hero">
+            <div class="hero-bg-orbs">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+            </div>
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <p class="hero-greeting">Hello, World! 👋</p>
+                    <h1 class="hero-title">
+                        I'm <span class="gradient-text">nqxcami</span>
+                    </h1>
+                    <div class="typewriter-wrapper">
+                        <span class="typewriter-prefix">$ </span>
+                        <span class="typewriter" id="typewriter"></span>
+                        <span class="cursor-blink">|</span>
+                    </div>
+                    <p class="hero-description">
+                        Passionate developer crafting clean, performant, and beautiful digital experiences. 
+                        Turning ideas into reality, one commit at a time.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary" id="hero-cta">
+                            <span>View My Work</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <a href="https://github.com/nqxcami" class="btn btn-ghost" id="hero-github" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub Profile
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-target="10">0</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="5">0</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                            <span class="stat-label">Dedication</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                            <span class="window-title">portfolio.js</span>
+                        </div>
+                        <pre class="code-content"><code><span class="c-keyword">const</span> <span class="c-variable">developer</span> = {
+  <span class="c-property">name</span>: <span class="c-string">"nqxcami"</span>,
+  <span class="c-property">role</span>: <span class="c-string">"Full Stack Dev"</span>,
+  <span class="c-property">skills</span>: [
+    <span class="c-string">"HTML"</span>, <span class="c-string">"CSS"</span>,
+    <span class="c-string">"JavaScript"</span>, <span class="c-string">"Git"</span>
+  ],
+  <span class="c-property">passion</span>: <span class="c-string">"Clean Code"</span>,
+  <span class="c-property">available</span>: <span class="c-bool">true</span>,
+
+  <span class="c-fn">code</span>() {
+    <span class="c-keyword">return</span> <span class="c-string">"Building the future 🚀"</span>;
+  }
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+            <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+                <div class="scroll-arrow"></div>
+            </a>
+        </section>
+
+        <!-- ===== ABOUT SECTION ===== -->
+        <section id="about" class="about section">
             <div class="container">
-                <div class="hero-content">
-                    <h2>Welcome to My Portfolio</h2>
-                    <p>Building innovative solutions and sharing knowledge through web development</p>
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                <div class="section-header">
+                    <p class="section-label">Get to know me</p>
+                    <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-image-wrapper reveal">
+                        <div class="about-avatar">
+                            <div class="avatar-ring"></div>
+                            <div class="avatar-inner">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="avatar-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            </div>
+                        </div>
+                        <div class="about-badges">
+                            <div class="badge badge-1">
+                                <span class="badge-icon">⚡</span>
+                                <span>Fast Learner</span>
+                            </div>
+                            <div class="badge badge-2">
+                                <span class="badge-icon">🎯</span>
+                                <span>Detail Oriented</span>
+                            </div>
+                            <div class="badge badge-3">
+                                <span class="badge-icon">🚀</span>
+                                <span>Open Source</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-text reveal">
+                        <p class="about-lead">
+                            Hi! I'm <strong>nqxcami</strong>, a passionate developer who loves building things for the web.
+                        </p>
+                        <p>
+                            I believe in writing clean, maintainable code and creating user experiences that feel intuitive and delightful. 
+                            Whether it's crafting pixel-perfect UIs or architecting robust back-end systems, I bring the same attention to quality and detail.
+                        </p>
+                        <p>
+                            When I'm not coding, I'm exploring new technologies, contributing to open source, and constantly pushing the boundaries of what's possible on the web.
+                        </p>
+                        <div class="about-highlights">
+                            <div class="highlight">
+                                <span class="highlight-icon">📍</span>
+                                <span>Based in South Korea</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-icon">💼</span>
+                                <span>Open to Opportunities</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-icon">🎓</span>
+                                <span>Lifelong Learner</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-icon">🌐</span>
+                                <span>GitHub: @nqxcami</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/nqxcami" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            View My GitHub
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about">
+        <!-- ===== SKILLS SECTION ===== -->
+        <section id="skills" class="skills section">
             <div class="container">
-                <h2>About Me</h2>
-                <p>I'm a passionate developer focused on creating professional, user-friendly web experiences. With a commitment to clean code and best practices, I build projects that make an impact.</p>
-                <div class="skills">
-                    <h3>Skills</h3>
-                    <ul>
-                        <li>HTML5 & Semantic Markup</li>
-                        <li>CSS3 & Responsive Design</li>
-                        <li>JavaScript</li>
-                        <li>Web Development</li>
-                        <li>Version Control (Git)</li>
-                    </ul>
+                <div class="section-header">
+                    <p class="section-label">What I work with</p>
+                    <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card reveal" id="skill-html">
+                        <div class="skill-icon-wrap" style="--icon-color: #e44d26;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
+                        </div>
+                        <h3>HTML5</h3>
+                        <p>Semantic markup, accessibility, SEO best practices</p>
+                        <div class="skill-bar"><div class="skill-fill" style="--fill: 90%;"></div></div>
+                        <span class="skill-pct">90%</span>
+                    </div>
+                    <div class="skill-card reveal" id="skill-css">
+                        <div class="skill-icon-wrap" style="--icon-color: #1572b6;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414v-.001z"/></svg>
+                        </div>
+                        <h3>CSS3</h3>
+                        <p>Flexbox, Grid, animations, responsive design</p>
+                        <div class="skill-bar"><div class="skill-fill" style="--fill: 85%;"></div></div>
+                        <span class="skill-pct">85%</span>
+                    </div>
+                    <div class="skill-card reveal" id="skill-js">
+                        <div class="skill-icon-wrap" style="--icon-color: #f7df1e;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+                        </div>
+                        <h3>JavaScript</h3>
+                        <p>ES6+, DOM manipulation, async programming</p>
+                        <div class="skill-bar"><div class="skill-fill" style="--fill: 80%;"></div></div>
+                        <span class="skill-pct">80%</span>
+                    </div>
+                    <div class="skill-card reveal" id="skill-git">
+                        <div class="skill-icon-wrap" style="--icon-color: #f05032;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></svg>
+                        </div>
+                        <h3>Git & GitHub</h3>
+                        <p>Version control, branching, collaboration</p>
+                        <div class="skill-bar"><div class="skill-fill" style="--fill: 75%;"></div></div>
+                        <span class="skill-pct">75%</span>
+                    </div>
+                    <div class="skill-card reveal" id="skill-responsive">
+                        <div class="skill-icon-wrap" style="--icon-color: #a855f7;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                        </div>
+                        <h3>Responsive Design</h3>
+                        <p>Mobile-first, cross-browser, fluid layouts</p>
+                        <div class="skill-bar"><div class="skill-fill" style="--fill: 88%;"></div></div>
+                        <span class="skill-pct">88%</span>
+                    </div>
+                    <div class="skill-card reveal" id="skill-perf">
+                        <div class="skill-icon-wrap" style="--icon-color: #10b981;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </div>
+                        <h3>Performance</h3>
+                        <p>Web Vitals, optimization, clean architecture</p>
+                        <div class="skill-bar"><div class="skill-fill" style="--fill: 72%;"></div></div>
+                        <span class="skill-pct">72%</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
+        <!-- ===== PROJECTS SECTION ===== -->
+        <section id="projects" class="projects section">
             <div class="container">
-                <h2>Projects</h2>
+                <div class="section-header">
+                    <p class="section-label">What I've built</p>
+                    <h2 class="section-title">My <span class="gradient-text">Projects</span></h2>
+                </div>
                 <div class="projects-grid">
-                    <article class="project-card">
-                        <h3>Portfolio Website</h3>
-                        <p>A professional portfolio website built with semantic HTML and responsive CSS, showcasing best practices in web development.</p>
-                        <a href="https://github.com/nqxcami/nqxcami" class="project-link">View on GitHub</a>
+
+                    <article class="project-card reveal" id="project-portfolio">
+                        <div class="project-top">
+                            <div class="project-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/nqxcami/nqxcami.github.io" class="project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="View source on GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                </a>
+                                <a href="https://nqxcami.github.io" class="project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="View live site">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>Portfolio Website</h3>
+                            <p>A fully responsive personal portfolio built with semantic HTML5, vanilla CSS3, and JavaScript. Features dark mode, glassmorphism, particle animations, and smooth scroll interactions.</p>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">GitHub Pages</span>
+                        </div>
                     </article>
+
+                    <article class="project-card reveal" id="project-github">
+                        <div class="project-top">
+                            <div class="project-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/nqxcami" class="project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>GitHub Profile</h3>
+                            <p>Active GitHub profile showcasing open source contributions, repositories, and collaborative coding projects. A hub for all development activity and community involvement.</p>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Open Source</span>
+                            <span class="tag">Collaboration</span>
+                            <span class="tag">Git</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal project-card-cta" id="project-more">
+                        <div class="project-cta-inner">
+                            <div class="cta-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </div>
+                            <h3>More Coming Soon</h3>
+                            <p>Currently working on exciting new projects. Stay tuned!</p>
+                            <a href="https://github.com/nqxcami" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Follow on GitHub</a>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
+        <!-- ===== CONTACT SECTION ===== -->
+        <section id="contact" class="contact section">
             <div class="container">
-                <h2>Get In Touch</h2>
-                <p>Feel free to reach out through GitHub or other professional channels.</p>
-                <a href="https://github.com/nqxcami" class="btn btn-primary">Visit GitHub Profile</a>
+                <div class="section-header">
+                    <p class="section-label">Let's connect</p>
+                    <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+                </div>
+                <div class="contact-wrapper reveal">
+                    <div class="contact-info">
+                        <p class="contact-lead">
+                            Whether you have a project in mind, a question to ask, or just want to say hello — 
+                            my inbox is always open. I'll get back to you as soon as possible!
+                        </p>
+                        <div class="contact-links">
+                            <a href="https://github.com/nqxcami" class="contact-link" id="contact-github" target="_blank" rel="noopener noreferrer">
+                                <div class="contact-link-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                </div>
+                                <div>
+                                    <span class="contact-link-label">GitHub</span>
+                                    <span class="contact-link-value">@nqxcami</span>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                        </div>
+                        <a href="https://github.com/nqxcami" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer" id="contact-cta">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            Say Hello
+                        </a>
+                    </div>
+                    <div class="contact-decoration">
+                        <div class="deco-card deco-card-1">
+                            <span class="deco-emoji">👋</span>
+                            <span>Hello!</span>
+                        </div>
+                        <div class="deco-card deco-card-2">
+                            <span class="deco-emoji">💻</span>
+                            <span>Let's Build</span>
+                        </div>
+                        <div class="deco-card deco-card-3">
+                            <span class="deco-emoji">🚀</span>
+                            <span>Launch It</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 nqxcami. All rights reserved.</p>
-            <p>Built with HTML5, CSS3, and a passion for clean code.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <span class="logo-bracket">&lt;</span>nqxcami<span class="logo-bracket">/&gt;</span>
+            </div>
+            <p class="footer-copy">&copy; <span id="footer-year"></span> nqxcami. Crafted with ❤️ and clean code.</p>
+            <div class="footer-links">
+                <a href="https://github.com/nqxcami" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+            </div>
         </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script src="main.js"></script>
 </body>
 </html>
