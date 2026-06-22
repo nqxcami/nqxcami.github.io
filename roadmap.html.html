@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The roadmap to connecting Mongolia to global capital — an investment banking career trajectory across the Asia-Pacific.">
+<title>Capital Bridge — An Investment Banking Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Newsreader:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d1117;
+    --ink-2:#11161f;
+    --navy:#14213d;
+    --navy-line:#1d2c4d;
+    --gold:#c8a557;
+    --gold-bright:#e3c479;
+    --paper:#f4f1ea;
+    --paper-dim:#cdc7ba;
+    --paper-faint:#8b8576;
+    --rule:rgba(200,165,87,.22);
+    --rule-soft:rgba(244,241,234,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold);color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+
+  /* ---- background field ---- */
+  .field{position:fixed;inset:0;z-index:-2;background:
+    radial-gradient(1100px 700px at 78% -8%, rgba(20,33,61,.55), transparent 60%),
+    radial-gradient(900px 600px at 8% 105%, rgba(20,33,61,.42), transparent 60%),
+    var(--ink);}
+  .grid-lines{position:fixed;inset:0;z-index:-1;opacity:.4;
+    background-image:linear-gradient(var(--rule-soft) 1px,transparent 1px),
+      linear-gradient(90deg,var(--rule-soft) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 40%, black, transparent 85%);}
+
+  /* ---- nav ---- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(20px,5vw,64px);
+    backdrop-filter:blur(10px);
+    background:linear-gradient(180deg, rgba(13,17,23,.86), rgba(13,17,23,.3));
+    border-bottom:1px solid var(--rule-soft);}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;letter-spacing:.02em;
+    display:flex;align-items:center;gap:.55rem}
+  .brand .mark{width:26px;height:26px;border:1px solid var(--gold);
+    display:grid;place-items:center;font-size:.7rem;color:var(--gold);
+    font-family:'JetBrains Mono',monospace;transform:rotate(45deg)}
+  .brand .mark span{transform:rotate(-45deg)}
+  .nav-links{display:flex;gap:2rem;font-size:.8rem;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--paper-dim);font-weight:500}
+  .nav-links a{position:relative;transition:color .25s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;
+    background:var(--gold);transition:width .3s}
+  .nav-links a:hover{color:var(--paper)}
+  .nav-links a:hover::after{width:100%}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* ---- shell ---- */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.7rem}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+
+  /* ---- hero ---- */
+  header.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    position:relative;padding-top:90px;padding-bottom:60px}
+  .hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:clamp(30px,5vw,70px);align-items:center}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:42px}}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;
+    font-size:clamp(2.7rem,7vw,5.4rem);line-height:.98;letter-spacing:-.015em;margin:1.4rem 0 1.2rem}
+  .hero h1 em{font-style:italic;color:var(--gold-bright)}
+  .lede{font-size:clamp(1.02rem,1.5vw,1.22rem);color:var(--paper-dim);max-width:34ch;
+    font-family:'Newsreader',serif}
+  .hero-cta{display:flex;gap:1rem;margin-top:2.3rem;flex-wrap:wrap}
+  .btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.05em;
+    padding:.85rem 1.5rem;border:1px solid var(--gold);color:var(--ink);
+    background:var(--gold);transition:.3s;display:inline-flex;align-items:center;gap:.5rem}
+  .btn:hover{background:var(--gold-bright);border-color:var(--gold-bright);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--paper)}
+  .btn.ghost:hover{background:rgba(200,165,87,.08);transform:translateY(-2px)}
+
+  /* ticket card */
+  .ticket{border:1px solid var(--navy-line);background:
+    linear-gradient(160deg, rgba(20,33,61,.6), rgba(13,17,23,.6));
+    padding:0;position:relative;overflow:hidden}
+  .ticket::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;
+    background:linear-gradient(90deg,var(--gold),transparent)}
+  .ticket-head{padding:1.3rem 1.5rem 1rem;border-bottom:1px dashed var(--navy-line);
+    display:flex;justify-content:space-between;align-items:flex-start}
+  .ticket-head .t{font-family:'JetBrains Mono',monospace;font-size:.66rem;
+    letter-spacing:.18em;color:var(--paper-faint);text-transform:uppercase}
+  .ticket-head .v{font-family:'Fraunces',serif;font-size:1.45rem;color:var(--paper);margin-top:.2rem}
+  .ticket-route{padding:1.3rem 1.5rem;display:flex;flex-direction:column;gap:1rem}
+  .leg{display:flex;align-items:center;gap:.9rem;font-size:.86rem}
+  .leg .dot{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--gold);flex-shrink:0}
+  .leg .dot.fill{background:var(--gold)}
+  .leg .city{font-weight:600;color:var(--paper)}
+  .leg .meta{color:var(--paper-faint);font-family:'JetBrains Mono',monospace;font-size:.7rem;margin-left:auto}
+  .leg-line{margin-left:4px;width:1px;height:14px;background:var(--navy-line)}
+  .ticket-foot{padding:1rem 1.5rem;border-top:1px dashed var(--navy-line);
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--paper-faint);
+    display:flex;justify-content:space-between;letter-spacing:.08em}
+
+  /* ---- section frame ---- */
+  section{padding:clamp(70px,11vh,130px) 0;position:relative}
+  .sec-head{margin-bottom:clamp(40px,7vh,72px);max-width:60ch}
+  .sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.9rem,4vw,3rem);
+    line-height:1.05;letter-spacing:-.01em;margin:1.1rem 0 1rem}
+  .sec-head p{color:var(--paper-dim);font-family:'Newsreader',serif;font-size:1.08rem}
+  hr.rule{border:none;height:1px;background:var(--rule);margin:0}
+
+  /* ---- thesis stat row ---- */
+  .thesis{display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border:1px solid var(--rule);background:rgba(20,33,61,.18)}
+  @media(max-width:760px){.thesis{grid-template-columns:1fr}}
+  .stat{padding:2rem 1.8rem;border-right:1px solid var(--rule)}
+  .stat:last-child{border-right:none}
+  @media(max-width:760px){.stat{border-right:none;border-bottom:1px solid var(--rule)}
+    .stat:last-child{border-bottom:none}}
+  .stat .n{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,2.9rem);color:var(--gold-bright);
+    line-height:1;font-weight:600}
+  .stat .l{font-size:.82rem;color:var(--paper-dim);margin-top:.7rem;line-height:1.45}
+
+  /* ---- roadmap timeline ---- */
+  .road{position:relative;margin-top:1rem}
+  .road::before{content:"";position:absolute;left:calc(2rem - 1px);top:8px;bottom:8px;width:2px;
+    background:linear-gradient(var(--gold),var(--navy-line) 92%);}
+  @media(max-width:680px){.road::before{left:13px}}
+  .stage{position:relative;padding-left:5rem;padding-bottom:clamp(40px,6vh,64px);
+    opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
+  .stage.in{opacity:1;transform:none}
+  @media(max-width:680px){.stage{padding-left:3.2rem}}
+  .stage:last-child{padding-bottom:0}
+  .node{position:absolute;left:0;top:0;width:4rem;display:flex;justify-content:center}
+  @media(max-width:680px){.node{width:1.7rem;left:0}}
+  .node .ring{width:34px;height:34px;border-radius:50%;background:var(--ink);
+    border:2px solid var(--gold);display:grid;place-items:center;
+    font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--gold);z-index:2}
+  .stage.current .node .ring{background:var(--gold);color:var(--ink);
+    box-shadow:0 0 0 5px rgba(200,165,87,.16)}
+  .stage-card{border:1px solid var(--navy-line);background:
+    linear-gradient(165deg, rgba(20,33,61,.34), rgba(13,17,23,.5));padding:1.6rem 1.8rem;
+    transition:border-color .3s, transform .3s}
+  .stage-card:hover{border-color:var(--gold);transform:translateX(4px)}
+  .stage-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+  .stage-phase{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--gold)}
+  .stage-when{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--paper-faint)}
+  .stage h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;margin:.5rem 0 .2rem;color:var(--paper)}
+  .stage .place{font-size:.9rem;color:var(--gold-bright);font-family:'Newsreader',serif;font-style:italic;margin-bottom:.8rem}
+  .stage p{color:var(--paper-dim);font-size:.94rem}
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.03em;
+    padding:.32rem .7rem;border:1px solid var(--rule);color:var(--paper-dim);
+    background:rgba(200,165,87,.04)}
+  .badge-now{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;
+    background:var(--gold);color:var(--ink);padding:.2rem .5rem;text-transform:uppercase;font-weight:600}
+
+  /* ---- mandate / pillars ---- */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  @media(max-width:860px){.pillars{grid-template-columns:1fr}}
+  .pillar{border:1px solid var(--navy-line);padding:1.8rem;position:relative;
+    background:rgba(20,33,61,.16);transition:.3s}
+  .pillar:hover{background:rgba(20,33,61,.32);transform:translateY(-4px)}
+  .pillar .idx{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--gold);
+    letter-spacing:.1em}
+  .pillar h4{font-family:'Fraunces',serif;font-size:1.32rem;font-weight:600;margin:.9rem 0 .6rem}
+  .pillar p{font-size:.9rem;color:var(--paper-dim)}
+
+  /* ---- principle quote ---- */
+  .principle{border-left:2px solid var(--gold);padding:.4rem 0 .4rem 2rem;margin:1rem 0}
+  .principle blockquote{font-family:'Fraunces',serif;font-style:italic;
+    font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.3;color:var(--paper)}
+  .principle cite{display:block;margin-top:1.2rem;font-style:normal;
+    font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.1em;color:var(--paper-faint)}
+
+  /* ---- contact ---- */
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,60px);align-items:center}
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr;gap:36px}}
+  .contact-card{border:1px solid var(--navy-line);background:rgba(20,33,61,.22);padding:0}
+  .contact-row{display:flex;justify-content:space-between;align-items:center;
+    padding:1.1rem 1.5rem;border-bottom:1px solid var(--navy-line);transition:.25s}
+  .contact-row:last-child{border-bottom:none}
+  .contact-row:hover{background:rgba(200,165,87,.06)}
+  .contact-row .k{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;
+    color:var(--paper-faint);text-transform:uppercase}
+  .contact-row .val{font-size:.95rem;color:var(--paper);font-weight:500}
+
+  /* ---- footer ---- */
+  footer{padding:3rem 0;border-top:1px solid var(--rule);margin-top:2rem}
+  .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .foot-in p{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--paper-faint);letter-spacing:.05em}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    .reveal,.stage{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<div class="field"></div>
+<div class="grid-lines"></div>
+
+<nav>
+  <a class="brand" href="#top"><span class="mark"><span>JN</span></span> Capital&nbsp;Bridge</a>
+  <div class="nav-links">
+    <a href="#thesis">Thesis</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#mandate">Mandate</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Career Thesis · Seoul → APAC → Ulaanbaatar</div>
+        <h1>Building the bridge from Mongolia to <em>global capital</em>.</h1>
+        <p class="lede">An investment banking trajectory with one endpoint: connecting Mongolia's economy to the world's financial markets — and bringing world-class banks home.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#roadmap">Trace the route →</a>
+          <a class="btn ghost" href="#mandate">The mandate</a>
+        </div>
+      </div>
+
+      <div class="ticket" aria-label="Career flight ticket">
+        <div class="ticket-head">
+          <div>
+            <div class="t">Boarding Pass · Career Class</div>
+            <div class="v">J. Otgonbayar</div>
+          </div>
+          <div class="badge-now">In transit</div>
+        </div>
+        <div class="ticket-route">
+          <div class="leg"><span class="dot fill"></span><span class="city">Seoul — Konkuk Univ.</span><span class="meta">2026 · NOW</span></div>
+          <div class="leg-line"></div>
+          <div class="leg"><span class="dot"></span><span class="city">London — LSE / Oxbridge</span><span class="meta">MSc</span></div>
+          <div class="leg-line"></div>
+          <div class="leg"><span class="dot"></span><span class="city">Hong Kong / Singapore</span><span class="meta">IB · APAC</span></div>
+          <div class="leg-line"></div>
+          <div class="leg"><span class="dot"></span><span class="city">Ulaanbaatar — Mongolia</span><span class="meta">FINAL</span></div>
+        </div>
+        <div class="ticket-foot">
+          <span>SEAT · ENTJ-A</span>
+          <span>GATE · INTL COMMERCE</span>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<hr class="rule">
+
+<!-- THESIS -->
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">The case</div>
+      <h2>One economy, under-connected to the capital that could transform it.</h2>
+      <p>Mongolia sits on vast resource wealth and a young, fast-urbanizing population, yet remains on the periphery of international finance. The thesis is simple: close that distance — deal by deal, institution by institution.</p>
+    </div>
+    <div class="thesis reveal">
+      <div class="stat">
+        <div class="n">3.5M</div>
+        <div class="l">People in one of the world's most resource-rich frontier economies — a market still waiting to be fully banked.</div>
+      </div>
+      <div class="stat">
+        <div class="n">2,000km</div>
+        <div class="l">The gap, roughly, between Ulaanbaatar and the APAC financial hubs where the capital actually sits.</div>
+      </div>
+      <div class="stat">
+        <div class="n">0→1</div>
+        <div class="l">Official branches of world-class banks to be established on home soil. The number that defines the mission.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">The route · five legs</div>
+      <h2>From a Seoul lecture hall to a banking system that didn't exist before.</h2>
+      <p>Each stage compounds into the next. The order isn't decorative — it's the actual sequence of capability, credential, and capital required to do the final job.</p>
+    </div>
+
+    <div class="road">
+      <div class="stage current">
+        <div class="node"><div class="ring">01</div></div>
+        <div class="stage-card">
+          <div class="stage-top"><span class="stage-phase">Foundation</span><span class="stage-when">2026 — present · <span class="badge-now">You are here</span></span></div>
+          <h3>Undergraduate — the groundwork</h3>
+          <div class="place">Konkuk University, Seoul · International Commerce &amp; Business</div>
+          <p>Self-funded studies under the international special-admission track while working physical-labour and service shifts. The objective: a high GPA, fluency in the language of global business, and the discipline that the rest of the route assumes.</p>
+          <div class="tags"><span class="tag">GPA → scholarship</span><span class="tag">MNE theory</span><span class="tag">Monetary systems</span><span class="tag">Self-funded</span></div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node"><div class="ring">02</div></div>
+        <div class="stage-card">
+          <div class="stage-top"><span class="stage-phase">Credential</span><span class="stage-when">Post-graduation</span></div>
+          <h3>Master's at a world-tier programme</h3>
+          <div class="place">LSE · Oxford · Cambridge — Finance</div>
+          <p>The credential that opens the front door of every bulge-bracket bank. The target schools double as a network: classmates and alumni become the first deal contacts, and the brand carries weight in every APAC interview room.</p>
+          <div class="tags"><span class="tag">MSc Finance</span><span class="tag">ACCA pathway</span><span class="tag">Global network</span></div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node"><div class="ring">03</div></div>
+        <div class="stage-card">
+          <div class="stage-top"><span class="stage-phase">Apprenticeship</span><span class="stage-when">Early career</span></div>
+          <h3>Investment banking, Asia-Pacific</h3>
+          <div class="place">Hong Kong · Singapore — bulge-bracket desk</div>
+          <p>Where the craft is actually learned: M&amp;A, capital markets, and the mechanics of moving money at scale. A family friend with decades on a Hong Kong IB desk has offered full mentorship — a rare, direct line into the industry that most never get.</p>
+          <div class="tags"><span class="tag">M&amp;A</span><span class="tag">ECM / DCM</span><span class="tag">HK mentor</span><span class="tag">Deal flow</span></div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node"><div class="ring">04</div></div>
+        <div class="stage-card">
+          <div class="stage-top"><span class="stage-phase">Specialisation</span><span class="stage-when">Mid career</span></div>
+          <h3>Frontier &amp; cross-border focus</h3>
+          <div class="place">APAC coverage · Mongolia &amp; Central Asia angle</div>
+          <p>Turn regional experience into a specialty: structuring deals that route international capital into under-served markets. Build the relationships, the track record, and the institutional trust that the final stage depends on.</p>
+          <div class="tags"><span class="tag">Frontier markets</span><span class="tag">Sovereign &amp; resource</span><span class="tag">Cross-border</span></div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node"><div class="ring">★</div></div>
+        <div class="stage-card">
+          <div class="stage-top"><span class="stage-phase">The mandate</span><span class="stage-when">Long horizon</span></div>
+          <h3>Connect Mongolia to global markets</h3>
+          <div class="place">Ulaanbaatar — bringing the banks home</div>
+          <p>The reason for every leg before it: establish official branches of world-class banks in Mongolia and wire the country into international capital markets. Not a job title — a piece of financial infrastructure that outlasts a career.</p>
+          <div class="tags"><span class="tag">Market access</span><span class="tag">Institution-building</span><span class="tag">Legacy</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- MANDATE -->
+<section id="mandate">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">What the endpoint actually requires</div>
+      <h2>Three things have to be true to bring a banking system home.</h2>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="idx">01 / Capital</div>
+        <h4>Access</h4>
+        <p>Channels for international investors to deploy into Mongolian opportunities with the structures, ratings, and confidence they expect anywhere else.</p>
+      </div>
+      <div class="pillar">
+        <div class="idx">02 / Institutions</div>
+        <h4>Presence</h4>
+        <p>Official branches of established global banks on the ground — turning Mongolia from a market that's discussed into a market that's served.</p>
+      </div>
+      <div class="pillar">
+        <div class="idx">03 / Trust</div>
+        <h4>Track record</h4>
+        <p>The credibility, earned deal by deal, that makes global institutions willing to commit. This is the part that takes a career to build.</p>
+      </div>
+    </div>
+
+    <div class="principle reveal" style="margin-top:clamp(40px,6vh,64px)">
+      <blockquote>“The plan is long because the goal isn't a position — it's an economy with somewhere new to plug in.”</blockquote>
+      <cite>— Operating principle</cite>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="eyebrow">Open to the right conversations</div>
+        <h2 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.9rem,4vw,3rem);line-height:1.05;margin:1.1rem 0 1rem">Internships, mentorship, and people who think in decades.</h2>
+        <p style="color:var(--paper-dim);font-family:'Newsreader',serif;font-size:1.08rem">If you work in finance across the Asia-Pacific — or care about frontier-market development — I'd value the conversation.</p>
+      </div>
+      <div class="contact-card reveal">
+        <a class="contact-row" href="mailto:jagaanq@gmail.com">
+          <span class="k">Email</span><span class="val">jagaanq@gmail.com</span>
+        </a>
+        <a class="contact-row" href="https://github.com/nqxcami" target="_blank" rel="noopener">
+          <span class="k">GitHub</span><span class="val">@nqxcami</span>
+        </a>
+        <a class="contact-row" href="https://instagram.com/jagaanq" target="_blank" rel="noopener">
+          <span class="k">Instagram</span><span class="val">@jagaanq</span>
+        </a>
+        <a class="contact-row" href="tel:+8201074791233">
+          <span class="k">Phone</span><span class="val">+82 010-7479-1233</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <a class="brand" href="#top"><span class="mark"><span>JN</span></span> Capital&nbsp;Bridge</a>
+    <p>© 2026 Jargal Otgonbayar · Seoul · Built with AI tooling</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.16});
+  document.querySelectorAll('.reveal,.stage').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
